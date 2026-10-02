@@ -10,9 +10,14 @@ O site é publicado como um Worker só de arquivos estáticos, conectado ao GitH
 | Deploy command | `npx wrangler deploy` |
 | Variáveis      | nenhuma é necessária  |
 
-O `wrangler.jsonc` aponta `assets.directory` para `.output/public` e não define `main`: nenhum script roda no Worker, os arquivos gerados são servidos diretamente. Sem esse arquivo, o Wrangler tenta configurar o projeto sozinho, detecta Nuxt e espera um build SSR (`.output/server/index.mjs`), que o `nuxt generate` não produz. O `name` do `wrangler.jsonc` precisa ser igual ao nome do Worker no painel.
+O `wrangler.jsonc` aponta `assets.directory` para `.output/public` e não define `main`: nenhum script roda no Worker, os arquivos gerados são servidos diretamente. O `name` precisa ser igual ao nome do Worker no painel.
 
-Para conferir localmente o que será publicado: `bun run generate && npx wrangler deploy --dry-run`, ou `npx wrangler dev` para servir com o mesmo runtime.
+Duas coisas fazem o Cloudflare tratar o projeto como SSR (procurando `.output/server/index.mjs`, que o `nuxt generate` não produz), e as duas estão neutralizadas:
+
+- sem `wrangler.jsonc`, o Wrangler tenta configurar o projeto sozinho e detecta Nuxt;
+- o CI do Cloudflare define `WORKERS_CI`, e o Nitro usa essa variável para escolher o preset `cloudflare-module`, que gera `.output/server/wrangler.json` e `.wrangler/deploy/config.json` (o Wrangler passa a ignorar o `wrangler.jsonc`) e faz o Nuxt Content trocar para D1. Por isso `nuxt.config.ts` fixa `nitro.preset: 'static'`.
+
+Para conferir localmente o que será publicado, simulando o CI: `WORKERS_CI=1 bun run generate && npx wrangler deploy --dry-run`. A saída deve ler os arquivos de `.output/public`, sem "Using redirected Wrangler configuration". `npx wrangler dev` serve com o mesmo runtime.
 
 O build já inclui:
 

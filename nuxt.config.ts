@@ -65,6 +65,8 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // Cloudflare's CI sets WORKERS_CI, which would otherwise make Nitro and Nuxt Content target an SSR Worker with D1.
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       routes: ['/', '/en', '/sitemap_index.xml'],
