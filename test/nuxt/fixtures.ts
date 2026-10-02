@@ -1,0 +1,42 @@
+import type { WorkItem } from '~/composables/useContent'
+
+export function makeWork(overrides: Partial<WorkItem> = {}): WorkItem {
+  return {
+    id: 'work_pt/pt/work/sample.md',
+    path: '/pt/work/sample',
+    stem: 'pt/work/sample',
+    extension: 'md',
+    meta: {},
+    body: { type: 'minimark', value: [] },
+    navigation: true,
+    description: '',
+    seo: {},
+    title: 'Sample',
+    headline: 'A sample case',
+    summary: 'Summary',
+    type: 'personal',
+    category: 'Category',
+    detail: 'case',
+    status: 'published',
+    featured: true,
+    order: 1,
+    accent: '#4f46e5',
+    role: 'Author',
+    scope: ['Scope'],
+    stack: ['vue', 'nuxt'],
+    links: {},
+    confidentiality: 'public',
+    visuals: 'none',
+    gallery: [],
+    phases: [
+      { title: 'First', subtitle: 'One', description: 'First phase', points: [] },
+      { title: 'Second', subtitle: 'Two', description: 'Second phase', points: [] },
+      { title: 'Third', subtitle: 'Three', description: 'Third phase', points: [] },
+    ],
+    decisions: [],
+    outcomes: ['Outcome'],
+    metrics: [],
+    learnings: [],
+    ...overrides,
+  } as WorkItem
+}

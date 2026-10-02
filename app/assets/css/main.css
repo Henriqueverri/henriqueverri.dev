@@ -1,0 +1,650 @@
+@import 'tailwindcss';
+
+/*
+ * Global UI state lives in data attributes on <html> so that styling reacts in CSS:
+ * - data-motion: set before first paint only when the user has no reduced-motion preference;
+ * - data-scroll: "up" | "down", written by the scroll direction plugin.
+ */
+@custom-variant motion (&:where([data-motion] *));
+@custom-variant scrolled-down (&:where([data-scroll='down'] *));
+@custom-variant hover-device {
+  @media (hover: hover) and (pointer: fine) {
+    @slot;
+  }
+}
+
+@theme {
+  --font-sans: 'Geist Variable', 'Geist Fallback', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Core: cool neutral scale */
+  --color-ink-50: #f7f7f8;
+  --color-ink-100: #efeff1;
+  --color-ink-200: #e3e3e7;
+  --color-ink-300: #c9cad0;
+  --color-ink-400: #9a9ca5;
+  --color-ink-500: #696c76;
+  --color-ink-600: #50535c;
+  --color-ink-700: #3a3d45;
+  --color-ink-800: #24262c;
+  --color-ink-900: #15161a;
+  --color-ink-950: #0b0c0f;
+
+  /* Core: accent (signal green) */
+  --color-accent-50: #ecfdf7;
+  --color-accent-100: #d1faec;
+  --color-accent-200: #a6f3d9;
+  --color-accent-300: #6de6c0;
+  --color-accent-400: #33d2a3;
+  --color-accent-500: #10b98a;
+  --color-accent-600: #059672;
+  --color-accent-700: #04785d;
+  --color-accent-800: #065f4b;
+  --color-accent-900: #064e3f;
+
+  /* Semantic */
+  --color-canvas: #fcfcfb;
+  --color-surface: #ffffff;
+  --color-surface-muted: var(--color-ink-50);
+  --color-surface-inverted: var(--color-ink-950);
+  --color-text: var(--color-ink-900);
+  --color-text-muted: var(--color-ink-500);
+  --color-text-subtle: var(--color-ink-600);
+  /* Large text only (headings): 3.5:1 on white. */
+  --color-text-faint: #85888f;
+  --color-line: var(--color-ink-200);
+  --color-line-strong: var(--color-ink-300);
+  --color-focus: var(--color-accent-600);
+
+  --breakpoint-xs: 30rem;
+
+  --container-page: 72rem;
+  --container-prose: 42rem;
+
+  --shadow-button:
+    0 2px 2px -1.5px rgb(0 0 0 / 0.3), 0 4.4px 4.4px -2.25px rgb(0 0 0 / 0.26),
+    0 9.8px 9.8px -3px rgb(0 0 0 / 0.2), 0 25px 25px -3.75px rgb(0 0 0 / 0.1),
+    0 -5px 5px -3.75px rgb(0 0 0 / 0.08);
+  --shadow-soft:
+    0 0.6px 0.6px -0.9px rgb(0 0 0 / 0.07), 0 1.8px 1.8px -1.8px rgb(0 0 0 / 0.07),
+    0 4.8px 4.8px -2.8px rgb(0 0 0 / 0.06), 0 15px 15px -3.7px rgb(0 0 0 / 0.03);
+  --shadow-card:
+    0 1px 1px -0.5px rgb(0 0 0 / 0.07), 0 4px 4px -1.4px rgb(0 0 0 / 0.07),
+    0 10px 11px -2.3px rgb(0 0 0 / 0.06), 0 29px 32px -3.3px rgb(0 0 0 / 0.05),
+    0 53px 58px -3.75px rgb(0 0 0 / 0.03);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-page: cubic-bezier(0.83, 0, 0.17, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+
+  --animate-ping: ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@font-face {
+  font-family: 'Geist Fallback';
+  src: local('Arial');
+  ascent-override: 92%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 104%;
+}
+
+/* ---------- Base ---------- */
+
+@layer base {
+  html {
+    color: var(--color-text);
+    background: var(--color-canvas);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    min-width: 300px;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-accent-200);
+    color: var(--color-ink-950);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+/* ---------- Layout ---------- */
+
+@utility container-page {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  @variant md {
+    padding-inline: 2.75rem;
+  }
+}
+
+@utility section-y {
+  padding-block: 5rem;
+
+  @variant md {
+    padding-block: 7rem;
+  }
+
+  @variant lg {
+    padding-block: 9rem;
+  }
+}
+
+@utility section-y-sm {
+  padding-block: 3rem;
+
+  @variant md {
+    padding-block: 4rem;
+  }
+}
+
+@utility page-top {
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+
+  @variant lg {
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* ---------- Typography ---------- */
+
+@utility text-display {
+  font-size: 2.5rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+
+  @variant xs {
+    font-size: 3rem;
+  }
+
+  @variant sm {
+    font-size: 3.75rem;
+  }
+
+  @variant lg {
+    font-size: 4.5rem;
+  }
+}
+
+@utility text-heading {
+  font-size: 2.25rem;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  font-weight: 450;
+
+  @variant md {
+    font-size: 3rem;
+  }
+
+  @variant lg {
+    font-size: 3.75rem;
+  }
+}
+
+@utility text-title {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+
+  @variant md {
+    font-size: 1.875rem;
+  }
+}
+
+@utility text-lead {
+  font-size: 1.125rem;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+
+  @variant md {
+    font-size: 1.25rem;
+  }
+}
+
+@utility text-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- Decoration ---------- */
+
+@utility bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px;
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--enter-y, 16px));
+    filter: blur(var(--enter-blur, 4px));
+  }
+}
+
+@keyframes enter-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes enter-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+    filter: blur(5px);
+  }
+}
+
+@keyframes word-cycle {
+  0%,
+  8% {
+    opacity: 0;
+    transform: translateY(70%);
+    filter: blur(5px);
+  }
+  16%,
+  33.3% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  41.3%,
+  100% {
+    opacity: 0;
+    transform: translateY(-70%);
+    filter: blur(5px);
+  }
+}
+
+/* Load-time entrance, staggered with --i. Never applied without data-motion. */
+.enter {
+  @variant motion {
+    animation: enter-up var(--duration-slow) var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+  }
+}
+
+.enter-left {
+  @variant motion {
+    animation: enter-left var(--duration-slow) var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+  }
+}
+
+.enter-pop {
+  @variant motion {
+    animation: enter-pop 700ms var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+  }
+}
+
+/* Scroll reveal (v-reveal). Hidden only while data-motion is on and the element was not observed yet. */
+[data-motion] [data-reveal]:not([data-revealed]) .reveal-item,
+[data-motion] [data-reveal='self']:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(4px);
+}
+
+[data-motion] [data-reveal] .reveal-item,
+[data-motion] [data-reveal='self'] {
+  transition:
+    opacity 700ms var(--ease-out-expo),
+    transform 700ms var(--ease-out-expo),
+    filter 700ms var(--ease-out-expo);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* Page transitions (View Transitions API) */
+::view-transition-old(root) {
+  animation: vt-old 500ms var(--ease-page) both;
+}
+
+::view-transition-new(root) {
+  animation: vt-new 500ms var(--ease-page) both;
+}
+
+@keyframes vt-old {
+  to {
+    transform: translateY(-12vh);
+    filter: blur(8px) brightness(0.6);
+  }
+}
+
+@keyframes vt-new {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* ---------- Components shared by markdown and Vue ---------- */
+
+/* Light sweep across buttons on hover. */
+.btn-sheen {
+  isolation: isolate;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.18) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 700ms var(--ease-out-expo);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::after {
+      transform: translateX(120%);
+    }
+  }
+}
+
+/*
+ * Hero stack → grid. While stacked, cards are not interactive and their labels stay hidden;
+ * before measurement (first frame) the cards are invisible to avoid a jump from the grid.
+ */
+[data-motion] [data-stack]:not([data-stack-ready]) [data-stack-card] {
+  opacity: 0;
+}
+
+[data-stack-ready] [data-stack-card] {
+  transition: opacity 500ms var(--ease-out-expo);
+}
+
+[data-stack='stacked'] [data-stack-card] {
+  pointer-events: none;
+}
+
+[data-stack='stacked'] .work-card-label {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* Portrait curtain: covers the image until the block is revealed. */
+.curtain {
+  transform: translateX(101%);
+}
+
+[data-motion] [data-reveal]:not([data-revealed]) .curtain {
+  transform: translateX(0);
+}
+
+[data-motion] [data-reveal] .curtain {
+  transition: transform 900ms var(--ease-page) 150ms;
+}
+
+/* Hero name: the largest type on the site, scaled with the viewport so the name always fits on one line. */
+.hero-title {
+  font-size: clamp(2.75rem, 11.5vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+
+  @variant lg {
+    font-size: clamp(4.5rem, 7vw, 6rem);
+  }
+}
+
+/*
+ * Footer signature: sized from the footer card width (the viewport minus its margin, capped at the page
+ * width) so the name spans past the inner padding; the card's overflow clips it at the sides and bottom.
+ */
+.footer-wordmark {
+  display: flex;
+  justify-content: center;
+  font-size: calc(min(100vw - 1rem, var(--container-page)) / 6.4);
+  line-height: 0.8;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+  margin-bottom: -0.14em;
+  pointer-events: none;
+  user-select: none;
+
+  &::before {
+    content: attr(data-wordmark);
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.03) 85%);
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Footer rotating word: every word shares one grid cell; without motion only the first one shows. */
+.rotating-word > * {
+  grid-area: 1 / 1;
+}
+
+.rotating-word > :not(:first-child) {
+  visibility: hidden;
+}
+
+[data-motion] .rotating-word > * {
+  visibility: visible;
+  opacity: 0;
+  animation: word-cycle 6s linear infinite;
+  animation-delay: calc(var(--i) * 2s - 0.5s);
+}
+
+/* Case body (markdown). Prose sits in a centered column; MDC blocks break out to the page width. */
+.case-body {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(1.5rem, 1fr)
+    [content-start] min(var(--container-prose), 100% - 3rem)
+    [content-end] minmax(1.5rem, 1fr)
+    [full-end];
+  counter-reset: case-section;
+  color: var(--color-text-subtle);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+
+  & > * {
+    grid-column: content;
+  }
+
+  & > .case-block {
+    grid-column: full;
+  }
+
+  & > h2 + .case-block {
+    margin-top: 2rem;
+  }
+
+  /* Markdown h2s and the section-level MDC blocks share one running number (01, 02...). */
+  & > h2,
+  & .case-section-title {
+    counter-increment: case-section;
+    color: var(--color-text);
+    font-size: 1.875rem;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+
+    &::before {
+      content: counter(case-section, decimal-leading-zero);
+      display: block;
+      margin-bottom: 0.75rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  & > h2 {
+    margin-top: 5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  & > h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  & h2 a,
+  & h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  & > p,
+  & > ul,
+  & > ol {
+    margin-bottom: 1.25rem;
+  }
+
+  & > ul,
+  & > ol {
+    padding-left: 1.25rem;
+  }
+
+  & > ul {
+    list-style: disc;
+  }
+
+  & > ol {
+    list-style: decimal;
+  }
+
+  & > ul > li,
+  & > ol > li {
+    margin-block: 0.4rem;
+    padding-left: 0.25rem;
+
+    &::marker {
+      color: var(--color-ink-400);
+    }
+  }
+
+  & strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  & > :is(p, ul, ol, blockquote) a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-line-strong);
+    text-underline-offset: 3px;
+    transition: text-decoration-color var(--duration-fast);
+
+    &:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  & > blockquote {
+    margin-block: 2rem;
+    border-left: 2px solid var(--color-accent-500);
+    padding-left: 1.25rem;
+    color: var(--color-text);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+  }
+
+  & :not(pre) > code {
+    border-radius: 0.375rem;
+    background: var(--color-ink-100);
+    padding: 0.1em 0.35em;
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+  }
+
+  & > pre {
+    margin-block: 2rem;
+    overflow-x: auto;
+    border-radius: 1rem;
+    background: var(--color-ink-950);
+    padding: 1.25rem 1.5rem;
+    color: var(--color-ink-100);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  & > :first-child {
+    margin-top: 0;
+  }
+}
+
+.link-underline {
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size var(--duration-base) var(--ease-out-expo);
+
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}

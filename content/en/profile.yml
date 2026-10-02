@@ -1,0 +1,58 @@
+hero:
+  status: Open to new opportunities
+  lead: Frontend Engineer · Vue, Nuxt and TypeScript
+
+about:
+  intro: Frontend Engineer focused on web products that need to keep evolving without losing consistency.
+  paragraphs:
+    - Day to day, I work with Vue, Nuxt and TypeScript. I build interfaces and Design Systems, integrate APIs and write tests.
+    - I've seen up close what happens when a product grows fast and the same screen ends up built in different ways. That's why I care about well-defined components, clear rules and talking early with Design and Backend.
+    - Outside work, I build my own products end to end, from code to deploy.
+
+toolkit:
+  description: Tools I use day to day and in the work presented here.
+  stack:
+    - vue
+    - nuxt
+    - typescript
+    - pinia
+    - tailwindcss
+    - vitest
+    - playwright
+    - laravel
+    - php
+    - postgresql
+    - githubactions
+    - docker
+    - cloudflare
+    - figma
+  capabilities:
+    - icon: lucide:layout-template
+      label: Frontend architecture
+    - icon: lucide:layers
+      label: Design Systems and tokens
+    - icon: lucide:component
+      label: Componentization and legacy UI refactoring
+    - icon: lucide:plug
+      label: API integration and contracts
+    - icon: lucide:flask-conical
+      label: Testing and CI/CD
+    - icon: lucide:waypoints
+      label: End-to-end product work
+
+contact:
+  headline: Is your product growing?
+  headlineMuted: Let's talk.
+  text: I'm looking for teams that treat the frontend as engineering — components with clear rules, API contracts discussed early, testing and code review as part of the flow.
+
+footer:
+  lead: "Let's"
+  words:
+    - build
+    - design
+    - evolve
+  tail: the next product together.
+
+upcoming:
+  title: More cases in progress
+  text: Other professional work is being documented with the same care for confidentiality.

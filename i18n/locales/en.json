@@ -1,0 +1,112 @@
+{
+  "a11y": {
+    "skip": "Skip to content",
+    "mainNav": "Main navigation",
+    "toggleMenu": "Open or close the menu",
+    "newTab": "(opens in a new tab)",
+    "language": "Language",
+    "home": "Henrique Verri, home page",
+    "previous": "Previous",
+    "next": "Next",
+    "carousel": "More work"
+  },
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "home": "Home"
+  },
+  "hero": {
+    "portfolio": "Portfolio",
+    "primary": "See my work",
+    "github": "GitHub",
+    "toWork": "Go to featured work"
+  },
+  "work": {
+    "heading": "Featured work",
+    "viewAll": "See all work",
+    "action": {
+      "case": "Read the case",
+      "github": "View on GitHub",
+      "live": "View project"
+    },
+    "type": {
+      "professional": "Professional case",
+      "personal": "Personal project"
+    },
+    "confidential": "Confidential case"
+  },
+  "projects": {
+    "title": "Work",
+    "titleMuted": "and cases",
+    "intro": "Personal projects you can explore end to end, and professional cases told with the care confidentiality calls for.",
+    "professional": "Professional cases",
+    "professionalText": "My contribution to real products, built by teams.",
+    "personal": "Personal projects",
+    "personalText": "Complete products, with open code, documentation and deploys."
+  },
+  "about": {
+    "title": "About",
+    "portraitAlt": "Portrait of Henrique Verri"
+  },
+  "toolkit": {
+    "title": "Engineering",
+    "titleMuted": "toolkit",
+    "groups": {
+      "frontend": "Frontend",
+      "quality": "Quality",
+      "backend": "Backend & infra",
+      "design": "Design"
+    },
+    "capabilitiesLabel": "What I work on"
+  },
+  "contact": {
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "Email"
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "location": "Brazil"
+  },
+  "case": {
+    "company": "Company",
+    "role": "Role",
+    "period": "Period",
+    "type": "Type",
+    "scope": "Scope",
+    "stack": "Stack",
+    "live": "Open the demo",
+    "github": "Code on GitHub",
+    "docs": "Technical docs",
+    "phases": "Approach",
+    "phasesMuted": "How the work was done.",
+    "phaseLabel": "Step {n}",
+    "decisions": "Decisions",
+    "decisionsMuted": "And their trade-offs.",
+    "why": "Why",
+    "tradeoff": "Trade-off",
+    "outcome": "Outcome",
+    "outcomeMuted": "What changed.",
+    "metrics": "Documented numbers",
+    "source": "Source",
+    "learnings": "What I learned",
+    "gallery": "Screens",
+    "disclosure": "Confidentiality",
+    "more": "More work",
+    "back": "All work",
+    "present": "present"
+  },
+  "error": {
+    "title": "Page not found",
+    "text": "The address may have changed or never existed.",
+    "back": "Back to home",
+    "generic": "Something went wrong"
+  },
+  "seo": {
+    "homeTitle": "Henrique Verri · Frontend Engineer",
+    "homeDescription": "Frontend Engineer working with Vue, Nuxt and TypeScript. Design Systems, frontend architecture, API contracts, testing and CI in web products.",
+    "projectsTitle": "Work and cases · Henrique Verri",
+    "projectsDescription": "Personal projects and professional frontend engineering cases by Henrique Verri: PulseBoard, AUGE and more."
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "a11y": {
+    "skip": "Pular para o conteúdo",
+    "mainNav": "Navegação principal",
+    "toggleMenu": "Abrir ou fechar o menu",
+    "newTab": "(abre em nova aba)",
+    "language": "Idioma",
+    "home": "Henrique Verri, página inicial",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "carousel": "Mais trabalhos"
+  },
+  "nav": {
+    "work": "Projetos",
+    "about": "Sobre",
+    "contact": "Contato",
+    "home": "Início"
+  },
+  "hero": {
+    "portfolio": "Portfólio",
+    "primary": "Ver projetos",
+    "github": "GitHub",
+    "toWork": "Ir para os projetos em destaque"
+  },
+  "work": {
+    "heading": "Trabalho em destaque",
+    "viewAll": "Ver todos os projetos",
+    "action": {
+      "case": "Ver case",
+      "github": "Ver no GitHub",
+      "live": "Ver projeto"
+    },
+    "type": {
+      "professional": "Case profissional",
+      "personal": "Projeto autoral"
+    },
+    "confidential": "Case com confidencialidade"
+  },
+  "projects": {
+    "title": "Projetos",
+    "titleMuted": "e cases",
+    "intro": "Projetos autorais que podem ser explorados de ponta a ponta e cases profissionais contados com o cuidado que a confidencialidade pede.",
+    "professional": "Cases profissionais",
+    "professionalText": "Minha contribuição em produtos reais, desenvolvidos em time.",
+    "personal": "Projetos autorais",
+    "personalText": "Produtos completos, com código, documentação e deploy abertos."
+  },
+  "about": {
+    "title": "Sobre",
+    "portraitAlt": "Retrato de Henrique Verri"
+  },
+  "toolkit": {
+    "title": "Engenharia",
+    "titleMuted": "e ferramentas",
+    "groups": {
+      "frontend": "Frontend",
+      "quality": "Qualidade",
+      "backend": "Backend e infra",
+      "design": "Design"
+    },
+    "capabilitiesLabel": "No que eu trabalho"
+  },
+  "contact": {
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "E-mail"
+  },
+  "footer": {
+    "navigation": "Navegação",
+    "location": "Brasil"
+  },
+  "case": {
+    "company": "Empresa",
+    "role": "Papel",
+    "period": "Período",
+    "type": "Tipo",
+    "scope": "Escopo",
+    "stack": "Stack",
+    "live": "Ver demo",
+    "github": "Código no GitHub",
+    "docs": "Documentação técnica",
+    "phases": "Abordagem",
+    "phasesMuted": "Como o trabalho foi conduzido.",
+    "phaseLabel": "Etapa {n}",
+    "decisions": "Decisões",
+    "decisionsMuted": "E seus trade-offs.",
+    "why": "Por quê",
+    "tradeoff": "Trade-off",
+    "outcome": "Resultado",
+    "outcomeMuted": "O que mudou.",
+    "metrics": "Números documentados",
+    "source": "Fonte",
+    "learnings": "O que aprendi",
+    "gallery": "Telas",
+    "disclosure": "Confidencialidade",
+    "more": "Mais trabalhos",
+    "back": "Todos os projetos",
+    "present": "atual"
+  },
+  "error": {
+    "title": "Página não encontrada",
+    "text": "O endereço pode ter mudado ou nunca ter existido.",
+    "back": "Voltar ao início",
+    "generic": "Algo deu errado"
+  },
+  "seo": {
+    "homeTitle": "Henrique Verri · Frontend Engineer",
+    "homeDescription": "Frontend Engineer com Vue, Nuxt e TypeScript. Design Systems, arquitetura de frontend, contratos de API, testes e CI em produtos web.",
+    "projectsTitle": "Projetos e cases · Henrique Verri",
+    "projectsDescription": "Projetos autorais e cases profissionais de engenharia frontend de Henrique Verri: PulseBoard, AUGE e outros."
+  }
+}
