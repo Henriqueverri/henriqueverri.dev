@@ -1,0 +1,12 @@
+{
+  // Must match the Worker name in the Cloudflare dashboard.
+  "name": "henriqueverri-dev",
+  "compatibility_date": "2026-09-01",
+  // Static assets only: no `main`, so no Worker script runs and `bun run generate` output is served as is.
+  "assets": {
+    "directory": ".output/public",
+    // `/projects` is served from `projects.html` (see `autoSubfolderIndex: false` in nuxt.config.ts).
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+  },
+}

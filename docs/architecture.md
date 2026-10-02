@@ -3,7 +3,7 @@
 ## Renderização
 
 - **Geração estática** (`nuxt generate`). Todas as páginas são pré-renderizadas a partir do crawl de `/` e `/en`; um link quebrado faz o build falhar (`failOnError`).
-- `autoSubfolderIndex: false` gera `projects.html` em vez de `projects/index.html`. Assim, o Cloudflare Pages serve `/projects` sem barra final, que é a forma usada no canonical e no sitemap.
+- `autoSubfolderIndex: false` gera `projects.html` em vez de `projects/index.html`. Assim, o Cloudflare serve `/projects` sem barra final, que é a forma usada no canonical e no sitemap.
 - As consultas ao @nuxt/content rodam no build e seguem no payload de cada página. A navegação no cliente reaproveita os payloads, então o banco SQLite do Content (WebAssembly) não é baixado no navegador; um teste E2E garante isso.
 
 ## Idiomas

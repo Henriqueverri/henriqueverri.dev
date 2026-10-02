@@ -4,7 +4,7 @@ Portfólio de Henrique Verri, Frontend Engineer. Site estático em português (p
 
 ## Stack
 
-Nuxt 4 · Vue 3 · TypeScript · Tailwind CSS v4 · @nuxt/content v3 · @nuxtjs/i18n · @nuxt/image · Bun · Vitest · Playwright · ESLint · Prettier. Hospedagem prevista: Cloudflare Pages (geração estática).
+Nuxt 4 · Vue 3 · TypeScript · Tailwind CSS v4 · @nuxt/content v3 · @nuxtjs/i18n · @nuxt/image · Bun · Vitest · Playwright · ESLint · Prettier. Hospedagem: Cloudflare Workers com arquivos estáticos (geração estática).
 
 Animações usam apenas CSS, Web Animations API, `requestAnimationFrame`, `IntersectionObserver` e `ResizeObserver`; não há biblioteca de animação.
 
@@ -18,7 +18,7 @@ bun run lint:fix       # corrige o que for automático
 bun run typecheck      # vue-tsc em app, testes, scripts e configs
 bun run test           # Vitest: unidades, validação de conteúdo e componentes
 bun run generate       # build estático em .output/public
-bun run preview        # serve .output/public como o Cloudflare Pages
+bun run preview        # serve .output/public como o Cloudflare
 bun run test:e2e       # Playwright (desktop e mobile) contra o build estático
 bun run assets         # regera favicons e imagens Open Graph a partir do conteúdo
 ```
@@ -54,4 +54,4 @@ docs/                    arquitetura, conteúdo e deploy
 
 - [docs/architecture.md](docs/architecture.md): decisões técnicas, motion, acessibilidade, SEO e testes.
 - [docs/content.md](docs/content.md): como editar o perfil e publicar um novo case.
-- [docs/deployment.md](docs/deployment.md): Cloudflare Pages e domínio (nada foi configurado ainda).
+- [docs/deployment.md](docs/deployment.md): deploy no Cloudflare Workers e domínio.

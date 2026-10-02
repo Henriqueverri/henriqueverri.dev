@@ -1,5 +1,5 @@
 /**
- * Serves `.output/public` the way Cloudflare Pages does: `/projects` → `projects.html`,
+ * Serves `.output/public` the way Cloudflare static assets do: `/projects` → `projects.html`,
  * directories → `index.html`, unknown paths → `404.html` with status 404.
  * Used by `bun run preview` and by the Playwright suite.
  */

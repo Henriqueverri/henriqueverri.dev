@@ -69,7 +69,7 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ['/', '/en', '/sitemap_index.xml'],
       failOnError: true,
-      // Cloudflare Pages serves `projects.html` at `/projects`, so URLs stay without a trailing slash.
+      // Cloudflare static assets serve `projects.html` at `/projects`, so URLs stay without a trailing slash.
       autoSubfolderIndex: false,
     },
   },

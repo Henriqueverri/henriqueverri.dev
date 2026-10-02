@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
 /**
- * Runs against the static build (`bun run generate` first), served like Cloudflare Pages
+ * Runs against the static build (`bun run generate` first), served like Cloudflare static assets
  * by scripts/serve-static.ts. Uses the installed Chrome; override with E2E_CHANNEL.
  */
 const port = Number(process.env.E2E_PORT ?? 4173)
