@@ -23,15 +23,15 @@ export function useWorkList() {
   )
 }
 
+/** In `nuxt dev`, drafts open by direct URL so they can be reviewed; listings and builds only show published work. */
 export function useWorkItem(slug: MaybeRefOrGetter<string>) {
   const { locale, work } = useLocaleCollections()
   return useAsyncData(
     () => `work-${locale.value}-${toValue(slug)}`,
-    () =>
-      queryCollection(work.value)
-        .where('status', '=', 'published')
-        .where('stem', 'LIKE', `%/work/${toValue(slug)}`)
-        .first(),
+    () => {
+      const query = queryCollection(work.value).where('stem', 'LIKE', `%/work/${toValue(slug)}`)
+      return (import.meta.dev ? query : query.where('status', '=', 'published')).first()
+    },
   )
 }
 

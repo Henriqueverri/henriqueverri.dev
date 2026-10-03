@@ -22,7 +22,7 @@ Depois de editar, rode `bun run test`. Os testes de conteúdo validam schema, pa
 ## Publicar um case
 
 1. Crie `content/pt/work/<slug>.md` e `content/en/work/<slug>.md` com o mesmo slug.
-2. Preencha o frontmatter (referência abaixo). Comece com `status: draft`: rascunhos não aparecem em lugar nenhum.
+2. Preencha o frontmatter (referência abaixo). Comece com `status: draft`: rascunhos não aparecem em listas nem no build. Com `bun run dev`, a página do rascunho abre pela URL direta (`/projects/<slug>` ou `/en/projects/<slug>`) para revisão.
 3. Escreva o corpo em Markdown e posicione os blocos estruturados onde fizerem sentido:
 
    ```md
@@ -94,12 +94,12 @@ seo: { title, description }
 - Nada de métricas, clientes, resultados, telas ou tecnologias que não possam ser comprovados. Sem número com fonte, o resultado é qualitativo e o `outcomeNote` explica isso.
 - Decisões de outras pessoas são atribuídas a elas no texto ("outro engenheiro decidiu..."), nunca apresentadas como suas.
 - Sem rótulos de senioridade ou frases genéricas (a lista está em `test/unit/content.test.ts`).
-- Em cases com confidencialidade, use `visuals: none` ou `recreated`, com `disclosure` explicando o que foi omitido.
+- Em cases com confidencialidade, `visuals: screenshots` só com autorização para mostrar as telas e com dados fictícios (capturas de uma execução local com a API simulada). Sem isso, use `none` ou `recreated`. Em todos os casos, o `disclosure` explica o que foi omitido e de onde vêm as telas.
 - Links novos precisam ser reais. O teste mantém uma lista de prefixos permitidos; ao adicionar um domínio novo, atualize-a conscientemente.
 
-## Próximos cases (Bamboost, Zen, Valz)
+## Próximos cases
 
-A estrutura já comporta esses cases; o conteúdo ainda não existe e não deve ser inventado. Para cada um, antes de escrever:
+Bamboost ainda não tem conteúdo, e ele não deve ser inventado. Para cada case, antes de escrever ou publicar:
 
 - Qual era o produto e o contexto da empresa (o que pode ser dito publicamente)?
 - Qual foi exatamente a sua contribuição e o que foi de outras pessoas?

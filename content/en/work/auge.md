@@ -29,8 +29,34 @@ stack:
   - vitest
   - figma
 confidentiality: restricted
-visuals: none
-disclosure: The product repositories are private, so this case exposes no commits, pull requests or internal documents. Code examples were generalized, and proprietary details — business rules, infrastructure and internal names — were removed. Colleagues are not named.
+visuals: screenshots
+disclosure: The product repositories are private, so this case exposes no commits, pull requests or internal documents. The screens were captured from a local run of the product with fictitious data — no real users, creators or products appear. Code examples were generalized, and proprietary details — business rules, infrastructure and internal names — were removed. Colleagues are not named.
+cover:
+  src: /images/work/auge/checkout-international.png
+  alt: AUGE checkout for a buyer from Portugal, with country selection, a +351 phone number, a simplified address and a notice that the charge is in Brazilian reais
+  width: 1440
+  height: 900
+gallery:
+  - src: /images/work/auge/checkout-brazil.png
+    alt: The same checkout configured for Brazil, with CPF, CEP and the card, Pix and boleto options
+    width: 1440
+    height: 900
+    caption: The same checkout for Brazil — CPF, CEP, Pix and boleto. The cover shows the configuration for Portugal; it is a single flow.
+  - src: /images/work/auge/community.png
+    alt: Community feed with posts, search and trending posts
+    width: 1440
+    height: 900
+    caption: Community — feed, search and trending posts. I built most of the frontend of this domain.
+  - src: /images/work/auge/journey.png
+    alt: My Journey page with current streak, best streak, achievements and the days of the week
+    width: 1440
+    height: 900
+    caption: Gamification — the student's study streak and achievements, another domain whose frontend I built.
+  - src: /images/work/auge/checkout-international-mobile.png
+    alt: International checkout on a phone screen
+    width: 780
+    height: 1688
+    caption: The international checkout on a phone.
 phases:
   - title: Mapping by family
     subtitle: Components, not pages
@@ -116,6 +142,9 @@ I worked as a Frontend Engineer. Day to day, my work involved:
 - organizing and planning frontend tasks.
 
 The product was built by a team. When a decision or an area belonged to another engineer, I say so in the section where the subject comes up.
+
+::case-gallery
+::
 
 ## The problem: frontend inconsistency at scale
 

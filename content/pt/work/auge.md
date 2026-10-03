@@ -29,8 +29,34 @@ stack:
   - vitest
   - figma
 confidentiality: restricted
-visuals: none
-disclosure: Os repositórios do produto são privados, então este case não expõe commits, pull requests nem documentos internos. Os exemplos de código foram generalizados, e detalhes proprietários — regras de negócio, infraestrutura e nomes internos — foram removidos. Os colegas não são citados pelo nome.
+visuals: screenshots
+disclosure: Os repositórios do produto são privados, então este case não expõe commits, pull requests nem documentos internos. As telas foram capturadas numa execução local do produto, com dados fictícios — nenhum usuário, produtor ou produto real aparece. Os exemplos de código foram generalizados, e detalhes proprietários — regras de negócio, infraestrutura e nomes internos — foram removidos. Os colegas não são citados pelo nome.
+cover:
+  src: /images/work/auge/checkout-international.png
+  alt: Checkout da AUGE para um comprador de Portugal, com seleção de país, telefone +351, endereço simplificado e aviso de cobrança em reais
+  width: 1440
+  height: 900
+gallery:
+  - src: /images/work/auge/checkout-brazil.png
+    alt: O mesmo checkout configurado para o Brasil, com CPF, CEP e as opções cartão, Pix e boleto
+    width: 1440
+    height: 900
+    caption: O mesmo checkout para o Brasil — CPF, CEP, Pix e boleto. A capa mostra a configuração para Portugal; o fluxo é um só.
+  - src: /images/work/auge/community.png
+    alt: Feed da comunidade com publicações, busca e publicações em alta
+    width: 1440
+    height: 900
+    caption: Comunidade — feed, busca e publicações em alta. Desenvolvi a maior parte do frontend deste domínio.
+  - src: /images/work/auge/journey.png
+    alt: Página Minha Jornada com sequência atual, melhor sequência, conquistas e os dias da semana
+    width: 1440
+    height: 900
+    caption: Gamificação — sequência de estudo e conquistas do aluno, outro domínio cujo frontend desenvolvi.
+  - src: /images/work/auge/checkout-international-mobile.png
+    alt: Checkout internacional em tela de celular
+    width: 780
+    height: 1688
+    caption: O checkout internacional no celular.
 phases:
   - title: Mapeamento por família
     subtitle: Componentes, não páginas
@@ -116,6 +142,9 @@ Atuei como Frontend Engineer. No dia a dia, meu trabalho envolvia:
 - organização e planejamento das tarefas de frontend.
 
 O produto foi construído por um time. Quando uma decisão ou uma área era de outro engenheiro, digo isso na seção em que o assunto aparece.
+
+::case-gallery
+::
 
 ## O problema: inconsistência no frontend em escala
 
